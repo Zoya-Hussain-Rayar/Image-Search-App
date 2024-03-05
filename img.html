@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+       
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        #searchInput {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        #searchBtn, #loadMoreBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #imageContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .imageItem {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .imageItem img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .imageItem:hover img {
+            transform: scale(1.05);
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 9999;
+        }
+        #overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            z-index: 10000;
+        }
+        .close {
+            top: 10px;
+            right: 10px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .loadMoreBtn {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #202020;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Image Search App</h1>
+        <input type="text" id="searchInput" placeholder="Enter search term">
+        <button id="searchBtn">Search</button>
+        <div id="imageContainer"></div>
+        <div id="loadMoreContainer">
+            <span id="loadMoreBtn" class="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More</span>
+        </div>
+    </div>
+
+    <div id="overlay">
+        <!-- Your overlay HTML content here -->
+    </div>
+
+    <script>
+        const apiKey = 'O6927LOqx1DiiUXcmFXEnGdq_puDNFd6z0aQL4_snqg';
+        const apiUrl = 'https://api.unsplash.com/photos/random';
+
+        let currentIndex = 0;
+        let imagesData = [];
+        let currentPage = 1;
+
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const imageContainer = document.getElementById('imageContainer');
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.createElement('img');
+        overlay.appendChild(overlayImg);
+
+        // Event listener for clicking the search button
+        searchBtn.addEventListener('click', async () => {
+            currentPage = 1;
+            const searchTerm = searchInput.value;
+            const response = await fetch(`${apiUrl}?query=${searchTerm}&client_id=${apiKey}&count=15&page=${currentPage}`);
+            const data = await response.json();
+            imagesData = data;
+            displayImages(data);
+        });
+
+        // Event listener for pressing Enter key in the search input field
+        searchInput.addEventListener('keyup', async (event) => {
+            if (event.key === 'Enter') {
+                searchBtn.click(); // Simulate click on the search button
+            }
+        });
+
+        // Event listener for clicking the load more button
+        loadMoreBtn.addEventListener('click', async () => {
+            currentPage++;
+            const searchTerm = searchInput.value;
+            const response = await fetch(`${apiUrl}?query=${searchTerm}&client_id=${apiKey}&count=15&page=${currentPage}`);
+            const data = await response.json();
+            imagesData = imagesData.concat(data);
+            displayImages(data);
+        });
+
+        // Function to display images
+        function displayImages(images) {
+            if (currentPage === 1) {
+                imageContainer.innerHTML = ''; // Clear previous images
+            }
+            images.forEach((image, index) => {
+                const imageItem = document.createElement('div');
+                imageItem.classList.add('imageItem');
+                imageItem.addEventListener('click', () => openOverlay(index)); // Pass index of clicked image
+                const img = document.createElement('img');
+                img.src = image.urls.small;
+                img.alt = image.alt_description;
+                imageItem.appendChild(img);
+                imageContainer.appendChild(imageItem);
+            });
+        }
+
+        // Function to open overlay with full-size image
+        function openOverlay(index) {
+            const imageUrl = imagesData[index].urls.full;
+            overlayImg.src = imageUrl;
+            overlay.style.display = 'block';
+        }
+
+        // Function to close overlay
+        function closeOverlay() {
+            overlay.style.display = 'none';
+        }
+
+        // Function to navigate to next image in overlay
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % imagesData.length;
+            const imageUrl = imagesData[currentIndex].urls.full;
+            overlayImg.src = imageUrl;
+        }
+
+        // Function to navigate to previous image in overlay
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + imagesData.length) % imagesData.length;
+            const imageUrl = imagesData[currentIndex].urls.full;
+            overlayImg.src = imageUrl;
+        }
+
+        // Function to display random images when the page loads
+        window.onload = async () => {
+            const response = await fetch(`${apiUrl}?client_id=${apiKey}&count=15`);
+            const data = await response.json();
+            imagesData = data;
+            displayImages(data);
+        };
+    </script>
+</body>
+</html>
