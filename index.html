@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image-Search-App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <div id="container">
-        <h1>Image Search App</h1>
-        <input type="text" id="searchInput" placeholder="Enter search term">
-        <button id="searchBtn">Search</button>
-        <div id="imageContainer">
-            <div class="column1"></div>
-            <div class="column2"></div>
-            <div class="column3"></div>
-        </div>
-        <div id="loadMoreContainer">
-            <span id="loadMoreBtn" class="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More</span>
-        </div>
+    <h1>Image Search App</h1>
+    <input type="text" id="searchInput" placeholder="Enter search term">
+    <button id="searchBtn">Search</button>
+    <div id="imageContainer">
+        <div class="column1"></div>
+        <div class="column2"></div>
+        <div class="column3"></div>
     </div>
-
-    <div id="overlay">
-        <span class="controls close" onclick="closeOverlay()">&#10006;</span>
-        <span class="controls prev" onclick="prevImage()">&#10094;</span>
-        <img id="overlayImg" src="" alt="">
-        <span class="controls next" onclick="nextImage()">&#10095;</span>
+    <div id="loadMoreContainer">
+        <span id="loadMoreBtn" class="loadMoreBtn"><i class="fas fa-plus-circle"></i> Load More</span>
     </div>
+</div>
 
+<div id="overlay">
+    <span class="controls close" onclick="closeOverlay()">&#10006;</span>
+    <i onclick="prevImage()"  class="controls prev fa-solid fa-arrow-left"></i>
+    <img id="overlayImg" src="" alt="">
+    <i onclick="nextImage()" class="controls next fa-solid fa-arrow-right"></i>
+</div>
 
     <script src="script.js"></script>
 
