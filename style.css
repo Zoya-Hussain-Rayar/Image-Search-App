@@ -81,7 +81,8 @@
       
           .close {
             top: 20px;
-            right: 13px;
+            right: 15px;
+            font-size:2rem;
         }
 
         .prev {
