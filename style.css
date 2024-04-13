@@ -79,9 +79,9 @@
 
         }
       
-        .close {
-            top: 10px;
-            right: 10px;
+          .close {
+            top: 20px;
+            right: 13px;
         }
 
         .prev {
