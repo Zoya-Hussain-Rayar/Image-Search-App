@@ -191,11 +191,27 @@ p{
     display: block;
 }
 .slider-container .input-box{
-  display: none;
-
-    
+  display: none; 
 }
 
+a{
+    position: absolute;
+    bottom: 20px;
+    padding:0.3rem 0.55rem ;
+    border-radius: 50%;
+    font-size: 1.14rem;
+    font-weight: bolder;
+    color: rgb(25, 25, 25);
+    background-color: rgb(255, 255, 255);
+    right: 10px;
+    transition: all 0.4s ease;
+    box-shadow: 1px 1px 3px rgb(195, 194, 191) ;
+}
+a:hover{
+    transform: scale(1.1);
+    color: rgb(29, 28, 28);
+}
+ 
 @keyframes slide {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
