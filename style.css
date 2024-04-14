@@ -1,4 +1,13 @@
-  body {
+   @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Platypi:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Platypi", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+        }
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -8,17 +17,39 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding: 20px;
+            padding: 20px 10px;
         }
 
-        #searchInput {
-            width: 70%;
-            padding: 10px;
+        .input-box {
+            max-width: 600px;
+            width: 100%;
             font-size: 16px;
-            margin-bottom: 20px;
-        }
+            border-radius: 30px;
+            box-shadow: 1px 1px 3px rgb(232, 231, 230);
+            border: 1px solid #202020;
+            padding-right: 10px;
+            overflow: hidden;
+             margin-top: 2rem;
 
-        #searchBtn, #loadMoreBtn {
+        }
+        input{
+            border: none;
+            outline: none;
+            width: 94%;
+            background: transparent;
+            height: 100%;
+            padding: 10px 10px;
+            overflow: hidden;
+        }
+     
+        #searchBtn{
+            cursor: pointer;
+
+        }
+        #searchBtn:hover{
+            transform: scale(1.3);
+        }
+        #loadMoreBtn {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -76,10 +107,9 @@
             z-index: 10000;
             font-size: 2.5rem;
             transition: all 0.4s ease;
-
         }
       
-          .close {
+        .close {
             top: 16px;
             right: 13px;
             font-size: 1.5rem;
@@ -94,11 +124,122 @@
 
         }
 
-        .loadMoreBtn {
+        #loadMoreBtn {
             display: inline-block;
             margin-top: 20px;
             font-size: 14px;
-            font-weight: 800;
+            font-weight: 600;
             color: #202020;
             cursor: pointer;
+            transition: all 0.6s linear;
+
+            border: 1px solid black;
+            padding: 0.46rem 1.8rem;
+            border-radius: 30px;
         }
+        #loadMoreBtn:hover{
+            color: white;
+            background-color: black;
+            border-color:black ;
+        }
+        .head{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .slider-container {
+    max-width: 600px;
+    height: 300px;
+    overflow: hidden;
+    width: 49%;
+
+    margin: auto;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 49%;
+    margin:1rem 0.5rem;
+}
+p{
+    font-size: 1rem;
+    line-height: 1.2rem;
+    margin:.5rem ;
+}
+
+.slider {
+    display: flex;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    display: none;
+    transition: all 0.5s ease-in-out;
+    object-position: center;
+    object-fit: cover;
+    height: 100%;
+}
+
+.slider img.active {
+    display: block;
+}
+.slider-container .input-box{
+  display: none;
+
+    
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@media (max-width:800px) {
+.head{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    max-width: 700px;
+    width:100%;
+    margin: 1rem 0rem;
+    margin-right: 1rem;
+}
+.slider-container{
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 0;
+}
+.slider-container .input-box{
+  display: block;
+  margin-top: 1.5rem;
+  max-width: 750px;
+}
+
+.input-box {
+          display: none;
+        }
+
+        
+#imageContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 500px;
+    margin: 1rem auto;
+}
+}
