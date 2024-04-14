@@ -48,21 +48,31 @@ loadMoreBtn.addEventListener('click', async () => {
     displayImages(data, startIndex); // Pass the starting index to displayImages
 });
 
+
 // Function to display images
-function displayImages(images, startIndex = 0) {
+function displayImages(images) {
     images.forEach((image, index) => {
-        const columnIndex = (startIndex + index) % 3; // Adjust the columnIndex calculation
+        const columnIndex = index % 3; // Distribute images equally among the columns
         const column = document.querySelector(`.column${columnIndex + 1}`);
         const imageItem = document.createElement('div');
         imageItem.classList.add('imageItem');
-        imageItem.setAttribute('onclick', `openOverlay(${startIndex + index})`);
         const img = document.createElement('img');
         img.src = image.urls.small;
         img.alt = image.alt_description;
+
+        // Create download button with Font Awesome icon
+        const downloadBtn = document.createElement('a');
+        downloadBtn.setAttribute('href', image.urls.full);
+        downloadBtn.setAttribute('download', `${image.alt_description || 'image'}_${index + 1}.jpg`); // Set filename dynamically
+        downloadBtn.innerHTML = '<i class="fa-solid fa-download"></i>'; // Font Awesome icon
+
+        // Append elements to image item
         imageItem.appendChild(img);
+        imageItem.appendChild(downloadBtn);
         column.appendChild(imageItem);
     });
 }
+
 
 
     // Function to open overlay with full-size image
