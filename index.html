@@ -4,16 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image-Search-App</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div id="container">
-    <h1>Image Search App</h1>
-    <input type="text" id="searchInput" placeholder="Enter search term">
-    <button id="searchBtn">Search</button>
+ <div id="container">
+     <div class="head">
+        <div class="search">
+            <h1>Image Search App</h1>
+            <p>An easy-to-use image search application that allows you to find stunning images quickly. Simply enter your search term, and our app will fetch relevant images from Unsplash's vast collection. Browse through high-quality photos, and click on any image to view it in full size. With our intuitive interface, discovering beautiful visuals has never been easier.</p>
+            <div class="input-box">
+                <input type="text" id="searchInput" placeholder="Enter search term">
+                <i id="searchBtn" class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <div class="slider-container">
+            <div class="slider">
+                <img src="img/slide2.png" alt="Image 1">
+                <img src="img/slide1.webp" alt="Image 2">
+                <img src="img/slide3.jpg" alt="Image 3">
+            </div>
+            <div class="input-box">
+                <input type="text" id="searchInput" placeholder="Enter search term">
+                <i id="searchBtn" class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+
+     </div>
     <div id="imageContainer">
         <div class="column1"></div>
         <div class="column2"></div>
@@ -30,6 +49,9 @@
     <img id="overlayImg" src="" alt="">
     <i onclick="nextImage()" class="controls next fa-solid fa-arrow-right"></i>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 
     <script src="script.js"></script>
 
