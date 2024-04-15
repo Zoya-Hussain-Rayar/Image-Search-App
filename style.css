@@ -155,7 +155,7 @@
         }
         .slider-container {
     max-width: 600px;
-    height: 300px;
+    min-height: 35vh;
     overflow: hidden;
     width: 49%;
 
@@ -177,13 +177,13 @@ p{
     margin:.5rem auto ;
 }
 
-.slider {
+.slider-container .slider {
     display: flex;
     overflow: hidden;
-    min-height: 40vh;
+    
 }
 
-.slider img {
+.slider-container .slider img {
     width: 100%;
     display: none;
     transition: all 0.5s ease-in-out;
@@ -191,7 +191,7 @@ p{
     object-fit: cover;
 }
 
-.slider img.active {
+.slider-container .slider img.active {
     display: block;
 }
 .slider-container .input-box{
