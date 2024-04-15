@@ -1,4 +1,4 @@
-   @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Platypi:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Platypi:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
         *{
             margin: 0;
             padding: 0;
@@ -27,24 +27,24 @@
             border-radius: 30px;
             box-shadow: 1px 1px 3px rgb(232, 231, 230);
             border: 1px solid #202020;
-            padding-right: 10px;
+            padding-right: 8px;
             overflow: hidden;
-             margin-top: 2rem;
+             margin: 1vh;
 
         }
         input{
             border: none;
             outline: none;
-            width: 94%;
+            width: 90%;
             background: transparent;
             height: 100%;
-            padding: 10px 10px;
+            padding: 10px;
             overflow: hidden;
         }
      
         #searchBtn{
             cursor: pointer;
-            transition: all 0.6s ease;
+            transition: all 0.4s ease;
 
         }
         #searchBtn:hover{
@@ -65,16 +65,17 @@
         }
 
         .imageItem {
-            position: relative;
             cursor: pointer;
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-height: 40vh;
+            width: 100%;
+
         }
 
         .imageItem img {
             width: 100%;
-            height: auto;
             display: block;
             margin: 12px 0;
         }
@@ -145,8 +146,8 @@
         }
         .head{
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
             width: 100%;
         }
         .slider-container {
@@ -160,22 +161,23 @@
 
 .search{
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
     flex-direction: column;
     max-width: 500px;
     width: 49%;
-    margin:1rem 0.5rem;
+    margin:1rem auto;
 }
 p{
     font-size: 1rem;
     line-height: 1.2rem;
-    margin:.5rem ;
+    margin:.5rem auto ;
 }
 
 .slider {
     display: flex;
     overflow: hidden;
+    min-height: 40vh;
 }
 
 .slider img {
@@ -184,16 +186,16 @@ p{
     transition: all 0.5s ease-in-out;
     object-position: center;
     object-fit: cover;
-    height: 100%;
 }
 
 .slider img.active {
     display: block;
 }
 .slider-container .input-box{
-  display: none; 
-}
+  display: none;
 
+    
+}
 a{
     position: absolute;
     bottom: 20px;
@@ -211,13 +213,16 @@ a:hover{
     transform: scale(1.1);
     color: rgb(29, 28, 28);
 }
+.input-box.second{
+    display: none;
+}
  
 @keyframes slide {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
 }
 
-@media (max-width:800px) {
+@media (max-width:850px) {
 .head{
     display: flex;
     flex-direction: column;
@@ -228,35 +233,32 @@ a:hover{
 
 .search{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     max-width: 700px;
     width:100%;
-    margin: 1rem 0rem;
-    margin-right: 1rem;
+    margin: 1rem auto;
+    /* margin-right: 1rem; */
 }
 .slider-container{
     max-width: 700px;
     width: 100%;
     margin-bottom: 0;
 }
-.slider-container .input-box{
-  display: block;
-  margin-top: 1.5rem;
-  max-width: 750px;
-}
-
-.input-box {
-          display: none;
-        }
-
         
 #imageContainer {
     display: flex;
     flex-direction: column;
     overflow: hidden;
     max-width: 500px;
+    margin: 1rem auto;
+}
+.search .input-box{
+    display: none;
+}
+.input-box.second{
+    display: block;
     margin: 1rem auto;
 }
 }
