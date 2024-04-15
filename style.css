@@ -222,7 +222,7 @@ a:hover{
     100% { transform: translateX(-100%); }
 }
 
-@media (max-width:850px) {
+@media (max-width:780px) {
 .head{
     display: flex;
     flex-direction: column;
