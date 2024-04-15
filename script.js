@@ -1,4 +1,4 @@
-  const apiKey = 'O6927LOqx1DiiUXcmFXEnGdq_puDNFd6z0aQL4_snqg';
+    const apiKey = 'O6927LOqx1DiiUXcmFXEnGdq_puDNFd6z0aQL4_snqg';
     const apiUrl = 'https://api.unsplash.com/photos/random';
 
     let currentIndex = 0;
@@ -48,7 +48,6 @@ loadMoreBtn.addEventListener('click', async () => {
     displayImages(data, startIndex); // Pass the starting index to displayImages
 });
 
-
 // Function to display images
 function displayImages(images) {
     images.forEach((image, index) => {
@@ -66,13 +65,17 @@ function displayImages(images) {
         downloadBtn.setAttribute('download', `${image.alt_description || 'image'}_${index + 1}.jpg`); // Set filename dynamically
         downloadBtn.innerHTML = '<i class="fa-solid fa-download"></i>'; // Font Awesome icon
 
+        // Add click event listener to open overlay on image click
+        img.addEventListener('click', () => {
+            openOverlay(index);
+        });
+
         // Append elements to image item
         imageItem.appendChild(img);
         imageItem.appendChild(downloadBtn);
         column.appendChild(imageItem);
     });
 }
-
 
 
     // Function to open overlay with full-size image
@@ -119,8 +122,6 @@ function prevImage() {
         displayImages(data);
     };
 
-
-
 let slideIndex = 0;
 const slides = document.querySelectorAll('.slider img');
 
@@ -148,3 +149,4 @@ function prevSlide() {
 setInterval(nextSlide, 3000); // Change slide every 3 seconds
 
 showSlide(slideIndex);
+
