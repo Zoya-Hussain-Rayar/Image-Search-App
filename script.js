@@ -1,6 +1,5 @@
-  <script>
         const apiKey = 'O6927LOqx1DiiUXcmFXEnGdq_puDNFd6z0aQL4_snqg';
-        const apiUrl = 'https://api.unsplash.com/photos/random';
+          const apiUrl = 'https://api.unsplash.com/photos/random';
         let currentIndex = 0;
         let imagesData = [];
         let currentPage = 1;
@@ -138,3 +137,33 @@
             imagesData = data;
             displayImages(data);
         };
+  
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slider img');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+        showSlide(slideIndex);
+
+       
