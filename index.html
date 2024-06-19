@@ -57,6 +57,35 @@
 
 
     <script src="script.js"></script>
+ <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slider img');
 
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+            slides[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+        }
+
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+        showSlide(slideIndex);
+
+    </script>
 </body>
 </html>
