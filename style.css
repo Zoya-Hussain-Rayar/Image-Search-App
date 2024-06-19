@@ -217,6 +217,23 @@ a:hover{
     display: none;
 }
  
+        .downloadBtn{
+            border: none;
+            position: absolute;
+            z-index: 123;
+            bottom: 30px;
+            right: 10px;
+            background: transparent;
+            color: #202020;
+            border-radius: 50%;
+        }
+        .downloadBtn .bi-arrow-down-circle-fill{
+          box-shadow: 2px 2px 15px 5px rgb(22, 22, 22);
+          color: black;
+          border-radius: 50%;
+
+        }
+
 @keyframes slide {
     0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
